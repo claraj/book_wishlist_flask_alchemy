@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+
+{% if booklist %}
+
+{% for book in booklist %}
+
+<div id="book_{{ book.book_id }}">
+  <P>
+    <h2>{{ book.title }} by {{ book.author}}</h2>
+  </P>
+
+  <div class='book_list_detail'>
+    {% if book.read %}
+    You've read this book.
+    {% else %}
+    Unread.
+    {% endif %}
+
+    <a href="{{ url_for('book_info', book_id=book.book_id) }}">More details</a>
+  </div>
+
+  <div class='book_operations'>
+    {% if book.read %}
+    {% else %}
+    <form class='read_form' method='POST' action="{{ url_for('book_read', read='true') }}">
+      <input type='submit' value='Mark as read?' class='read_button book_action_button'>
+      <input type='hidden' name='book_id' value={{ book.book_id }}>
+      <input type='hidden' name='read' value='True'>
+    </form>
+    {% endif %}
+
+    <button class='delete_book danger book_action_button' value="{{ book.book_id }}">Delete</button>
+  </div>
+</div>
+
+{% endfor %}
+
+<!-- Number of books in the list  -->
+<P> <span id="book_count">{{ booklist|length }}</span> book(s)</P>
+
+
+{% else %}
+
+<P>No books.</p>
+
+{% endif %}
+
+
+{% endblock %}
+
+<!-- Provide script to base.html. Used to delete books.  -->
+{% block scripts %}
+<script src="{{ url_for('static', filename='delete_book.js') }}"></script>
+{% endblock %}

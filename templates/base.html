@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Wishlist</title>
+
+  <link rel='stylesheet' href="{{ url_for('static', filename='book_style.css') }}" >
+
+  {% block head %}    <!-- If needed to add more info to the header e.g. title, stylesheet -->
+  {% endblock %}
+
+  <!-- Use Google fonts for nice text  -->
+  <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation menu, shown on each page. -->
+  <ul class='navigation'>
+    <li class='menu'><a href='{{ url_for('show_books', read='all') }}'>All books</a></li>
+    <li class='menu'><a href='{{ url_for('show_books', read='unread') }}'>Wishlist books</a></li>
+    <li class='menu'><a href='{{ url_for('show_books', read='read') }}'>Read books</a></li>
+    <li class='menu'><a href='{{ url_for('add_book') }}'>Add a book</a></li>
+  </ul>
+
+
+  {% block content %}   <!-- A block that the child template will fill in -->
+
+  {% endblock %}
+
+  {% block scripts %}   <!-- If needed, to add scripts or links to scripts. -->
+  {% endblock %}
+
+</body>
+</html>

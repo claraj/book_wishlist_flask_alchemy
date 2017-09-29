@@ -1,0 +1,30 @@
+<!--  Information about one book. -->
+
+{% extends "base.html" %}
+
+{% block content %}
+
+  <!-- Book data here -->
+
+  {% if book %}
+
+    <h2>{{ book.title }} by {{ book.author}}</h2>
+
+    <P>id: {{ book.book_id }}</p>
+
+    <p>
+      {% if book.read %}
+        Read: yes
+      {% else %}
+        Read: no
+      {% endif %}
+    </p>
+
+  {% endif %}
+
+    <!-- display any temporary flash messages  -->
+  {% for message in get_flashed_messages() %}
+    <p class='flashed_message'>{{ message}}</p>
+  {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,2 @@
+verify instructions for install db
+verify pc instructions; possible to set USER env variables on campus lab machines?

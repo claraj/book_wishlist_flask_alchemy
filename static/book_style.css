@@ -1,0 +1,59 @@
+
+li.menu {
+  display: inline;
+  padding: 10px;
+  list-style-type: none;   /* remove bullet point */
+  font-size: 20px;
+}
+
+ul.navigation {
+  border: 1px black solid;
+  margin:auto;
+  background-color: PowderBlue;
+
+
+}
+
+body {
+  font-family: 'Lora', serif;   /* A Google font */
+  background: Azure;
+}
+
+
+.add_book_form_label {
+  width: 100px;
+  display: inline-block;
+}
+
+.book_action_button {
+  margin: 8px;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+/* Regular buttons and things with the button class */
+.read_button {
+  background-color: orange;
+}
+
+.add_button {
+  background-color: DarkSeaGreen;
+}
+
+
+.danger {
+  background-color: red;
+}
+
+.flashed_message {
+  font-style:italic;
+}
+
+.read_form {
+  display : inline;
+}
+
+.delete_book {
+  display: inline
+}

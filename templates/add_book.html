@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action={{ url_for('add_book') }} method='POST'>
+  <P><label for='author' class="add_book_form_label">Author</label>
+    <input name='author' type='text' placeholder='author' id='author' required='true'></P>
+
+  <P><label for='title' class="add_book_form_label">Title</label>
+    <input name='title' type='text' placeholder='title' id='title' required='true'></P>
+
+  <P><label for='read' class="add_book_form_label">Read?</label>
+    <input name='read' type='checkbox' id='read' label='Read'></P>
+
+  <P><input type='submit' class='add_button book_action_button' label='Submit'></P>
+
+</form>
+
+
+<!-- display any temporary flash messages  -->
+{% for message in get_flashed_messages() %}
+<p class='flashed_message'>{{ message}}</p>
+{% endfor %}
+
+
+{% endblock %}
