@@ -1,12 +1,13 @@
 from flask import Flask
 from flask import url_for, render_template, request, redirect, flash, abort
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__)
 
 
 DEBUG = True     # Turns logging features on for code. Separate to the in-browser debugger and code-relaucher.
-SQLALCHEMY_DATABASE_URI = 'sqlite:///wishlist.db'   # /// relative path to this app.    # //// absolute path to somewhere on file system
+SQLALCHEMY_DATABASE_URI = os.environ['FLASK_SQL_DATABASE']   #Set this environment variable e.g. 'sqlite:///wishlist.db' or whatever.  /// relative path to this app.    # //// absolute path to somewhere on file system
 SECRET_KEY = 'super random super secret value'  # Replace with an actual secret key read in from private data store e.g. env variable or other file ignored by git
 
 

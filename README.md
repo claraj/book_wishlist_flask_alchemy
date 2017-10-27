@@ -27,8 +27,9 @@ pip install -r requirements.txt
 Configure Flask environment variables, Mac
 
 ```
-export $FLASK_APP=book_wishlist.py
-export $FLASK_DEBUG=1
+export FLASK_APP=book_wishlist.py
+export FLASK_DEBUG=1
+export FLASK_SQL_DATABASE=sqlite:///wishlist.db
 ```
 
 Configure Flask environment variables, PC
@@ -36,6 +37,7 @@ Configure Flask environment variables, PC
 ```
 set FLASK_APP=book_wishlist.py
 set FLASK_DEBUG=1
+set FLASK_SQL_DATABASE=sqlite:///wishlist.db
 ```
 
 Run app
