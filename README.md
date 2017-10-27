@@ -68,9 +68,10 @@ Add psycopg2 and gunicorn to requirements.txt
 Create a **Procfile** with this line in it
 
 ```
-web: gunicorn app:book_wishlist
+web: gunicorn book_wishlist:app
 ```
 
+Ensure you've got all of your latest changes committed and create an app with
 ```
 heroku apps:create
 ```
@@ -87,4 +88,20 @@ Get DB connection URL with
 heroku config
 ```
 
-Copy the URL and set as local env var if desired
+(Suggested but optional) Copy the URL and set as local env variable `DATABASE_URL` for local testing but with your Postgres database
+
+Verify things are working with
+
+```
+heroku local web
+```
+
+All good?
+
+```
+git push heroku master
+```
+
+```
+heroku open
+```
