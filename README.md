@@ -52,9 +52,9 @@ App should be at 127.0.0.1:5000
 Run tests by typing
 
 ```
-python -m unittests tests.test_book_wishlist
+python -m unittest tests.test_book_wishlist
 ```
 or
 ```
-python -m unittests tests/test_book_wishlist.py
+python -m unittest tests/test_book_wishlist.py
 ```
