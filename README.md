@@ -29,7 +29,7 @@ Configure Flask environment variables, Mac
 ```
 export FLASK_APP=book_wishlist.py
 export FLASK_DEBUG=1
-export FLASK_SQL_DATABASE=sqlite:///wishlist.db
+export DATABASE_URL=sqlite:///wishlist.db
 ```
 
 Configure Flask environment variables, PC
@@ -37,7 +37,7 @@ Configure Flask environment variables, PC
 ```
 set FLASK_APP=book_wishlist.py
 set FLASK_DEBUG=1
-set FLASK_SQL_DATABASE=sqlite:///wishlist.db
+set DATABASE_URL=sqlite:///wishlist.db
 ```
 
 Run app
@@ -58,3 +58,33 @@ or
 ```
 python -m unittest tests/test_book_wishlist.py
 ```
+
+-------------
+
+## Deployment to Heroku
+
+Add psycopg2 and gunicorn to requirements.txt
+
+Create a **Procfile** with this line in it
+
+```
+web: gunicorn app:book_wishlist
+```
+
+```
+heroku apps:create
+```
+
+Provision Postgres add on
+
+```
+heroku addons:create heroku-postgresql
+```
+
+Get DB connection URL with
+
+```
+heroku config
+```
+
+Copy the URL and set as local env var if desired
