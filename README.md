@@ -2,7 +2,7 @@
 
 ### Setup
 
-In terminal/command prompt, root directoty of the project.
+In terminal/command prompt, root directory of the project.
 
 Set up virtual environment, Mac
 
@@ -46,7 +46,7 @@ Run app
 flask run
 ```
 
-App should be at 127.0.0.1:5000
+App should be at http://127.0.0.1:5000
 
 
 Run tests by typing
@@ -63,7 +63,9 @@ python -m unittest tests/test_book_wishlist.py
 
 ## Deployment to Heroku
 
-Add psycopg2 and gunicorn to requirements.txt
+Create a Heroku account and install Heroku command line tools. 
+
+Add latest versions of psycopg2 and gunicorn to requirements.txt
 
 Create a **Procfile** with this line in it
 
@@ -71,7 +73,7 @@ Create a **Procfile** with this line in it
 web: gunicorn book_wishlist:app
 ```
 
-Ensure you've got all of your latest changes committed and create an app with
+Ensure you've got all of your latest changes committed and create a Heroku app with
 ```
 heroku apps:create
 ```
