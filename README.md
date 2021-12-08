@@ -49,7 +49,7 @@ flask run
 App should be at 127.0.0.1:5000
 
 
-Run tests by typing
+Run tests with
 
 ```
 python -m unittest tests.test_book_wishlist
