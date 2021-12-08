@@ -24,7 +24,7 @@ init_db()
 
 
 
-'''Application home page. Redirects to list of unread books.'''
+"""Application home page. Redirects to list of unread books."""
 @app.route('/')
 def home_page():
     return redirect(url_for('show_books', read='UNREAD'))
@@ -69,19 +69,21 @@ def add_book():
 
 
 
-'''Get book info for an ID, or 404 if book id not found'''
 @app.route('/book/<int:book_id>')
 def book_info(book_id):
-    #show data about one book
+    
+    """Get book info for an ID, or 404 if book id not found"""
+    
     book = Book.query.get_or_404(book_id)           # Raise 404 if book not found.
     return render_template('book.html', book=book)
 
 
 
-'''Change the read value for a book. The id and read = True or False in the POST parameters '''
 @app.route('/book/read', methods=['POST'])
 def book_read():
 
+    """Change the read value for a book. The id and read = True or False in the POST parameters """
+    
     #Was book read or not? this could be used to make read book as unread.
     read_str = request.form['read']  # Form data is strings
     read = read_str == 'True'
@@ -97,16 +99,17 @@ def book_read():
 
     else :
         app.logger.warning('Attempt to update book id %s but book was not found in DB' % book_id)
-        abort(500)   # Invalid request. Return 500 error code.
+        abort(404)   # Invalid request. Return 404 client error code.
 
     return redirect(url_for('book_info', book_id=book_id))
 
 
 
-'''Fetch all books, or fetch books based on read or unread.'''
 @app.route('/booklist/<read>')
 def show_books(read):
 
+    """Fetch all books, or fetch books based on read or unread."""
+    
     if read == 'read':
         title = 'Books you\'ve read'
         booklist = Book.query.filter_by(read=True).all()
@@ -123,10 +126,12 @@ def show_books(read):
 
 
 
-''' Delete a book by ID '''
 @app.route('/book/<int:book_id>', methods=['DELETE'])
 
 def delete_book(book_id):
+    
+    """ Delete a book by ID """
+    
     book = Book.query.get(book_id)
     if book:
         db.session.delete(book)
